@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SingleChoiceItemView">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xd1-8e-qmw">
+                    <rect key="frame" x="0.0" y="0.0" width="369" height="60"/>
+                    <connections>
+                        <action selector="didSelectItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="c01-tY-KTz"/>
+                    </connections>
+                </button>
+                <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdD-4F-My0">
+                    <rect key="frame" x="5" y="0.0" width="359" height="55"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn-form-radio" highlightedImage="btn-form-radio-active" translatesAutoresizingMaskIntoConstraints="NO" id="a5y-Ms-AWo">
+                    <rect key="frame" x="5" y="0.0" width="60" height="55"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="ThJ-kH-av9"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awP-jQ-mbb">
+                    <rect key="frame" x="65" y="12" width="284" height="28"/>
+                    <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="awP-jQ-mbb" secondAttribute="bottom" constant="20" id="4yd-Ck-K0L"/>
+                <constraint firstItem="awP-jQ-mbb" firstAttribute="leading" secondItem="a5y-Ms-AWo" secondAttribute="trailing" id="6qq-iX-gr3"/>
+                <constraint firstAttribute="trailing" secondItem="mdD-4F-My0" secondAttribute="trailing" constant="5" id="7aO-mg-aGD"/>
+                <constraint firstAttribute="bottom" secondItem="a5y-Ms-AWo" secondAttribute="bottom" constant="5" id="BY1-be-Xbz"/>
+                <constraint firstItem="mdD-4F-My0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="HHv-iM-g7U"/>
+                <constraint firstAttribute="trailing" secondItem="awP-jQ-mbb" secondAttribute="trailing" constant="20" id="JK7-Bs-JpS"/>
+                <constraint firstAttribute="bottom" secondItem="xd1-8e-qmw" secondAttribute="bottom" id="OEd-dD-J5v"/>
+                <constraint firstAttribute="bottom" secondItem="mdD-4F-My0" secondAttribute="bottom" constant="5" id="Rmd-cS-FTf"/>
+                <constraint firstItem="a5y-Ms-AWo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="dCU-in-lrL"/>
+                <constraint firstItem="xd1-8e-qmw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dCp-vY-Kub"/>
+                <constraint firstItem="mdD-4F-My0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iJf-zE-v7Z"/>
+                <constraint firstAttribute="trailing" secondItem="xd1-8e-qmw" secondAttribute="trailing" id="iaq-pI-gSl"/>
+                <constraint firstItem="a5y-Ms-AWo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="oOp-vf-hSZ"/>
+                <constraint firstItem="awP-jQ-mbb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="olY-c0-3Zc"/>
+                <constraint firstItem="xd1-8e-qmw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="url-ic-0PV"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="iconImageView" destination="a5y-Ms-AWo" id="OY3-2c-CA8"/>
+                <outlet property="selectButton" destination="xd1-8e-qmw" id="2jZ-Bd-Siu"/>
+                <outlet property="titleLabel" destination="awP-jQ-mbb" id="e7e-e7-ero"/>
+            </connections>
+            <point key="canvasLocation" x="301.5" y="138"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn-form-radio" width="24" height="24"/>
+        <image name="btn-form-radio-active" width="24" height="24"/>
+    </resources>
+</document>

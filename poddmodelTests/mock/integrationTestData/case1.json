@@ -1,0 +1,49 @@
+{
+  "startPageId": 1,
+  "pages": [
+    {
+      "id": 1,
+      "questions": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "questions": [
+        2
+      ]
+    },
+    {
+      "id": 3,
+      "questions": [
+        3
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "name": "q1"
+    },
+    {
+      "id": 2,
+      "name": "q2"
+    },
+    {
+      "id": 3,
+      "name": "q3"
+    }
+  ],
+  "transitions": [
+    {
+      "expression": "q1==1",
+      "from": 1,
+      "to": 2
+    },
+    {
+      "expression": "q2==3",
+      "from": 2,
+      "to": 3
+    }
+  ]
+}

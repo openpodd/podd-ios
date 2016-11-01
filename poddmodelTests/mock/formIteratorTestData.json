@@ -1,0 +1,150 @@
+{
+  "pages": [
+    {
+      "id": 292,
+      "questions": [
+        867
+      ]
+    },
+    {
+      "id": 272,
+      "questions": [
+        273
+      ]
+    },
+    {
+      "id": 271,
+      "questions": [
+        151
+      ]
+    },
+    {
+      "id": 3,
+      "questions": [
+        254
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": 867,
+      "items": [
+        {
+          "id": "กัด ดุร้าย",
+          "text": "กัด ดุร้าย"
+        },
+        {
+          "id": "กลืนไม่ได้",
+          "text": "กลืนไม่ได้"
+        },
+        {
+          "id": "เสียการทรงตัว",
+          "text": "เสียการทรงตัว"
+        }
+      ],
+      "name": "symptom",
+      "title": "อาการ พิษสุนัขบ้า",
+      "type": "multiple",
+      "validations": [
+        {
+          "message": "กรุณาระบุอาการ",
+          "type": "require"
+        }
+      ]
+    },
+    {
+      "id": 273,
+      "items": [
+        {
+          "id": "ยังมีชีวิตอยู่",
+          "text": "ยังมีชีวิตอยู่"
+        },
+        {
+          "id": "ตายแล้ว",
+          "text": "ตายแล้ว"
+        },
+        {
+          "id": "ไม่สามารถหาสัตว์\\nที่กัดได้",
+          "text": "ไม่สามารถหาสัตว์\\nที่กัดได้"
+        },
+        {
+          "id": "มีชีวิตอยู่แต่แสดงอาการ\\nโรคพิษสุนัขบ้า",
+          "text": "มีชีวิตอยู่แต่แสดงอาการ\\nโรคพิษสุนัขบ้า"
+        }
+      ],
+      "name": "animalStatus",
+      "title": "สัตว์ที่กัดยังมีชีวิตอยู่หรือไม่",
+      "type": "single",
+      "validations": [
+        {
+          "message": "กรุณาระบุสถานะของสัตว์ที่กัด",
+          "type": "require"
+        }
+      ]
+    },
+    {
+      "id": 151,
+      "name": "remark",
+      "title": "รายละเอียด",
+      "type": "text",
+      "validations": [
+        {
+          "message": "กรุณาระบุรายละเอียด",
+          "type": "require"
+        }
+      ]
+    },
+    {
+      "freeTextChoiceEnable": true,
+      "freeTextId": "อื่นๆ",
+      "freeTextName": "animalTypeOther",
+      "freeTextText": "อื่นๆ",
+      "id": 254,
+      "items": [
+        {
+          "id": "หมา",
+          "text": "หมา"
+        },
+        {
+          "id": "แมว",
+          "text": "แมว"
+        }
+      ],
+      "name": "animalType",
+      "title": "ประเภทสัตว์",
+      "type": "single",
+      "validations": [
+        {
+          "message": "กรุณาระบุประเภทสัตว์",
+          "type": "require"
+        }
+      ]
+    }
+  ],
+  "startPageId": 3,
+  "trigger": {
+    "pattern": "0000100001",
+    "pageId": 3,
+    "notificationText": "จากที่ท่านเคยรายงานสัตว์กัด กรุณาระบุสถานะของสัตว์ที่กัด?"
+  },
+  "transitions": [
+    {
+      "expression": "true",
+      "from": 3,
+      "order": 0,
+      "to": 271
+    },
+    {
+      "expression": "true",
+      "from": 271,
+      "order": 0,
+      "to": 272
+    },
+    {
+      "expression": "animalStatus.match(/พิษสุนัขบ้า/) != null",
+      "from": 272,
+      "order": 0,
+      "to": 292
+    }
+  ]
+}

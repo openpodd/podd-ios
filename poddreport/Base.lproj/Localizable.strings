@@ -1,0 +1,64 @@
+/* 
+  Localizable.strings
+  poddreport
+
+  Created by Opendream-iOS on 1/31/2559 BE.
+  Copyright © 2559 Opendream. All rights reserved.
+*/
+
+"SubmitStatus %@" = "สถานะ %@";
+
+"1000" = "พบข้อผิดพลาดในระบบ";
+"1001" = "พบข้อผิดพลาดการเข้าระบบ";
+"1002" = "บัญชีผู้ใช้หรือรหัสผ่านไม่ถูกต้อง\nกรุณาตรวจสอบข้อมูลอีกครั้ง";
+
+"2001" = "พบข้อผิดพลาดในการดึงข้อมูลระบบ";
+"2101" = "รหัส invitation code ไม่ถูกต้อง";
+"2110" = "ข้อมูลไม่ครบถ้วนหรือไม่ถูกต้อง";
+"3001" = "บันทึกข้อมูลไม่สำเร็จ";
+"9001" = "ไม่สามารถเชื่อมต่อระบบ";
+
+"LoginErrorTitle" = "ไม่สำเร็จ";
+"LoginErrorInformationNeeded" = "กรุณาตรวจสอบข้อมูลอีกครั้ง";
+
+"LogoutConfirmationTitle" = "ตั้งค่า";
+"LogoutConfirmationMessage" = "";
+
+"Next" = "ถัดไป";
+"OK" = "ตกลง";
+"Save" = "บันทึก";
+"Confirm" = "ยืนยัน";
+"End" = "ปิด";
+"ReportConfirm" = "ยืนยันว่าเป็นเหตุการณ์จริง";
+"ReportTesting" = "เป็นเหตุการณ์ทดสอบ";
+"Report" = "รายงาน";
+"TestReport" = "รายงานทดสอบ";
+"Cancel" = "ยกเลิก";
+"Sync" = "ปรับปรุงข้อมูล";
+"Logout" = "ออกจากระบบ";
+
+"InformationRequiredErrorTitle" = "ข้อมูลไม่ครบ";
+"InformationRequiredErrorMessage" = "กรุณาตรวจสอบข้อมูลอีกครั้ง";
+
+"ReportConfirmTitleString" = "ยืนยันว่าเป็นเหตุการณ์จริง";
+"ReportConfirmDetailString" = "ข้อมูลการรายงานเหตุผิดปกติของท่านจะถูกส่งแจ้งเตือนไปยังผู้มีหน้าที่รับผิดชอบ";
+
+"QuestionValidationErrorTitle" = "กรุณาตรวจสอบข้อมูล";
+
+"Waiting" = "รอส่งข้อมูล";
+"Failed" = "รอส่งข้อมูล.";
+"Sent" = "ส่งข้อมูลแล้ว";
+
+"ReportActionTitle" = "รายงาน";
+"ReportActionSubtitle" = "ข้อมูลการรายงานเหตุผิดปกติของท่านจะถูกส่งแจ้งเตือนไปยังผู้มีหน้าที่รับผิดชอบ";
+"AddReport" = "เพิ่มรายงาน";
+"ReportTest" = "ทดสอบรายงาน";
+
+"FollowUpConfirmTitle" = "เพิ่มรายงานติดตาม";
+"FollowUpConfirmSubtitle" = "คุณต้องการรายงาน การติดตาม ใช่หรือไม่";
+"FollowUpConfirmButton" = "รายงานติดตาม";
+
+"NoAdministrationAreaData" = "ไม่มีข้อมูลสังกัดพื้นที่";
+"NoAdministrationAreaDataDescription" = "กรุณาติดต่อผู้ดูแลระบบ";
+
+"By" = "โดย";

@@ -1,0 +1,12 @@
+{
+  "id": 314,
+  "name": "deathCount",
+  "title": "จำนวนสัตว์ตายในเล้า/คอก",
+  "type": "integer",
+  "validations": [
+    {
+      "message": "กรุณาระบุจำนวนสัตว์ตาย",
+      "type": "require"
+    }
+  ]
+}

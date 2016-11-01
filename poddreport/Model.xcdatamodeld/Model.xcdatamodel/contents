@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="Report" representedClassName="ReportManagedObject" syncable="YES">
+        <attribute name="administrationArea" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="followDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="formData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="incidentDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" syncable="YES"/>
+        <attribute name="parentReportGuid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reportId" optional="YES" attributeType="Integer 64" syncable="YES"/>
+        <attribute name="reportTypeId" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="submitStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="testing" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <entity name="ReportImage" representedClassName="ReportImageManagedObject" syncable="YES">
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSubmitted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isUploaded" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="linkImageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="linkThumbnailUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reportGuid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="submitStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="thumbnailUrl" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Report" positionX="0" positionY="0" width="128" height="240"/>
+        <element name="ReportImage" positionX="0" positionY="0" width="128" height="195"/>
+    </elements>
+</model>
