@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06B22F901877F3C01436C36F /* libPods-poddreport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F7DF5BF538B75C78F4E3C93 /* libPods-poddreport.a */; };
+		1CF876A01EAE12B5003A707D /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF8769F1EAE12B5003A707D /* UserNotifications.framework */; };
 		830AD1121C60979F003FE48F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830AD1111C60979F003FE48F /* LoginViewController.m */; };
 		830AE95D1C61B5FD00494DB3 /* ReportManagedObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 830AE95C1C61B5FD00494DB3 /* ReportManagedObject+CoreDataProperties.m */; };
 		830AE9601C61B74500494DB3 /* ReportManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 830AE95F1C61B74500494DB3 /* ReportManagedObject.m */; };
@@ -181,6 +182,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1CF8769E1EAE125B003A707D /* poddreport.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = poddreport.entitlements; sourceTree = "<group>"; };
+		1CF8769F1EAE12B5003A707D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		58532301F52F159D330020CB /* Pods-poddreportUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-poddreportUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-poddreportUITests/Pods-poddreportUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		71E85D3A48176B2EF9B22117 /* Pods-poddreport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-poddreport.release.xcconfig"; path = "Pods/Target Support Files/Pods-poddreport/Pods-poddreport.release.xcconfig"; sourceTree = "<group>"; };
 		7A8FFD79FDAD2C0F345F2364 /* Pods-poddreport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-poddreport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-poddreport/Pods-poddreport.debug.xcconfig"; sourceTree = "<group>"; };
@@ -418,6 +421,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CF876A01EAE12B5003A707D /* UserNotifications.framework in Frameworks */,
 				06B22F901877F3C01436C36F /* libPods-poddreport.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +448,7 @@
 		7C43BD03BFCA9D6E0DEC41FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CF8769F1EAE12B5003A707D /* UserNotifications.framework */,
 				7F7DF5BF538B75C78F4E3C93 /* libPods-poddreport.a */,
 				DAB0500A65B35CBB8691802F /* libPods-poddreportTests.a */,
 				C06AE0E5A48D79CD9446BA50 /* libPods-poddreportUITests.a */,
@@ -660,6 +665,7 @@
 		836A84771C59E5F7002F44C5 /* poddreport */ = {
 			isa = PBXGroup;
 			children = (
+				1CF8769E1EAE125B003A707D /* poddreport.entitlements */,
 				83D89B021C71AE61004C7F9E /* poddmodel */,
 				E36392961C6DC7ED00CC6438 /* Registration */,
 				8367F5121C6086430046DC4A /* Command */,
@@ -950,6 +956,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					836A84901C59E5F7002F44C5 = {
@@ -1178,7 +1187,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" PUBLIC_KEY SECRET_KEY";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" $PODD_PUBLIC_KEY $PODD_SECRET_KEY";
 		};
 		F81964E03C699E6CFFA68EB3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1527,6 +1536,7 @@
 			baseConfigurationReference = 7A8FFD79FDAD2C0F345F2364 /* Pods-poddreport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = poddreport/poddreport.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1551,6 +1561,7 @@
 			baseConfigurationReference = 71E85D3A48176B2EF9B22117 /* Pods-poddreport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = poddreport/poddreport.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (

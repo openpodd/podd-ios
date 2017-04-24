@@ -43,8 +43,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This app want to access your camera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>ต้องการเข้าถึงตำแหน่งปัจจุบันเพื่อการรายงานเหตุการณ์</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app want to access your photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SukhumvitSet.ttc</string>
