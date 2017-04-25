@@ -1187,7 +1187,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" $PODD_PUBLIC_KEY $PODD_SECRET_KEY";
+			shellScript = "${PROJECT_DIR}/fabric_run_script.sh";
 		};
 		F81964E03C699E6CFFA68EB3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
