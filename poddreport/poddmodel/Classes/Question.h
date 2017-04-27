@@ -19,6 +19,7 @@ static NSString * _Nonnull const QUESTION_TYPE_INTEGER = @"integer";
 static NSString * _Nonnull const QUESTION_TYPE_DOUBLE = @"double";
 static NSString * _Nonnull const QUESTION_TYPE_SINGLE = @"single";
 static NSString * _Nonnull const QUESTION_TYPE_MULTIPLE = @"multiple";
+static NSString * _Nonnull const QUESTION_TYPE_ADDRESS = @"address";
 
 @interface Question : NSObject
 @property (assign, nonatomic) int uid;
@@ -33,6 +34,9 @@ static NSString * _Nonnull const QUESTION_TYPE_MULTIPLE = @"multiple";
 @property (copy, nonatomic, nullable) NSString *freeTextText;
 @property (assign, nonatomic) BOOL freeTextChoiceEnable;
 
+@property (copy, nonatomic, nullable) NSString *filterFields;
+@property (copy, nonatomic, nullable) NSString *dataUrl;
+    
 @property (copy, nonatomic, nullable) NSString *hiddenName;
 
 + (instancetype _Nonnull)newWithUid:(int)uid;

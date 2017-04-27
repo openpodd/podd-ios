@@ -35,6 +35,8 @@
     question.freeTextText = data[@"freeTextText"];
     question.freeTextChoiceEnable = data[@"freeTextChoiceEnable"];
     question.hiddenName = data[@"hiddenName"];
+    question.dataUrl = data[@"dataUrl"];
+    question.filterFields = data[@"filterFields"];
     
     NSMutableArray *items = [NSMutableArray new];
     for (NSDictionary *item in data[@"items"]) {

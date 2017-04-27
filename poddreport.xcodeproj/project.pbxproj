@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		06B22F901877F3C01436C36F /* libPods-poddreport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F7DF5BF538B75C78F4E3C93 /* libPods-poddreport.a */; };
+		1C2A79BF1EAEFB0700C31767 /* AddressQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A79BE1EAEFB0700C31767 /* AddressQuestionView.m */; };
+		1C2A79C11EAF33A500C31767 /* QuestionDataSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A79C01EAF33A500C31767 /* QuestionDataSyncCommand.m */; };
 		1CF876A01EAE12B5003A707D /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF8769F1EAE12B5003A707D /* UserNotifications.framework */; };
 		830AD1121C60979F003FE48F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830AD1111C60979F003FE48F /* LoginViewController.m */; };
 		830AE95D1C61B5FD00494DB3 /* ReportManagedObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 830AE95C1C61B5FD00494DB3 /* ReportManagedObject+CoreDataProperties.m */; };
@@ -182,6 +184,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C2A79BA1EAEF9EC00C31767 /* AddressQuestionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressQuestionView.h; sourceTree = "<group>"; };
+		1C2A79BE1EAEFB0700C31767 /* AddressQuestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressQuestionView.m; sourceTree = "<group>"; };
+		1C2A79C01EAF33A500C31767 /* QuestionDataSyncCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDataSyncCommand.m; sourceTree = "<group>"; };
+		1C2A79C21EAF33C400C31767 /* QuestionDataSyncCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionDataSyncCommand.h; sourceTree = "<group>"; };
 		1CF8769E1EAE125B003A707D /* poddreport.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = poddreport.entitlements; sourceTree = "<group>"; };
 		1CF8769F1EAE12B5003A707D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		58532301F52F159D330020CB /* Pods-poddreportUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-poddreportUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-poddreportUITests/Pods-poddreportUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -517,6 +523,8 @@
 				83544D871C7C507600163B22 /* ReportFeedTableViewController.m */,
 				83544D8C1C7C5E3A00163B22 /* ReportFeedItem.h */,
 				83544D8D1C7C5E3A00163B22 /* ReportFeedItem.m */,
+				1C2A79BA1EAEF9EC00C31767 /* AddressQuestionView.h */,
+				1C2A79BE1EAEFB0700C31767 /* AddressQuestionView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -632,6 +640,8 @@
 				E3FCF3091C71C47F007CD91C /* CheckInvitationCodeCommand.m */,
 				83544D7D1C7C214000163B22 /* NSOperationQueue+Timeout.h */,
 				83544D7E1C7C214000163B22 /* NSOperationQueue+Timeout.m */,
+				1C2A79C21EAF33C400C31767 /* QuestionDataSyncCommand.h */,
+				1C2A79C01EAF33A500C31767 /* QuestionDataSyncCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -1292,6 +1302,7 @@
 				83544D851C7C4FC100163B22 /* ReportFeedViewController.m in Sources */,
 				839B5FA81C5F7CAA0047F9E0 /* ReportImageManagedObject.m in Sources */,
 				83D89B531C71AE62004C7F9E /* Transition.m in Sources */,
+				1C2A79C11EAF33A500C31767 /* QuestionDataSyncCommand.m in Sources */,
 				E36392991C6DC82600CC6438 /* RegistrationFormTableViewController.m in Sources */,
 				83544D8E1C7C5E3A00163B22 /* ReportFeedItem.m in Sources */,
 				830AE9631C61BE7200494DB3 /* ReportBaseViewController.m in Sources */,
@@ -1313,6 +1324,7 @@
 				83D89B501C71AE62004C7F9E /* RequiredQuestionValidation.m in Sources */,
 				831C9D4A1C5D10BC00D33EA3 /* SingleChoiceItemView.m in Sources */,
 				83D89B3E1C71AE62004C7F9E /* ConfigurationManager.m in Sources */,
+				1C2A79BF1EAEFB0700C31767 /* AddressQuestionView.m in Sources */,
 				839B5FA71C5F7CAA0047F9E0 /* ReportImageManagedObject+CoreDataProperties.m in Sources */,
 				83D89B3D1C71AE62004C7F9E /* ConfigurationCommand.m in Sources */,
 				83D89B461C71AE62004C7F9E /* MultipleRequiredQuestionValidation.m in Sources */,
