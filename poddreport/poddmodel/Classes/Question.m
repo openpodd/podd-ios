@@ -41,12 +41,11 @@
 }
 
 - (NSString *)toFormValue:(id)value {
-    if ([self.type isEqualToString:QUESTION_TYPE_SINGLE] ||
-            [self.type isEqualToString:QUESTION_TYPE_MULTIPLE] ||
-            [self.type isEqualToString:QUESTION_TYPE_TEXT]) {
-        return value;
+    if ([self.type isEqualToString:QUESTION_TYPE_INTEGER] ||
+            [self.type isEqualToString:QUESTION_TYPE_DOUBLE]) {
+        return [value stringValue];
     }
-    return [value stringValue];
+    return value;
 }
 
 - (id)fromFormValue:(NSString *)formValue {

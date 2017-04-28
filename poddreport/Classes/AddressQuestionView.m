@@ -21,6 +21,8 @@
     @property (strong, nonatomic, nonnull) NSArray<NSDictionary *> *results;
     @property (strong, nonatomic) NSMutableDictionary *currentLevels;
     @property (strong, nonatomic) NSMutableDictionary *currentSelectedLevels;
+    
+    @property (strong, nonatomic) NSString *defaultValue;
 
 @end
 
@@ -33,9 +35,10 @@
     if (self = [super initWithQuestion:question
                           defaultValue:values
                               delegate:delegate]) {
+        
+        self.defaultValue = values;
         [self loadItemViews];
-        //[self autolayout];
-        //[self choiceItemDidSelectItem:values];
+
     }
     return self;
 }
@@ -43,7 +46,6 @@
 - (void)buildCurrentLevels {
     
     self.currentLevels = [NSMutableDictionary new];
-    
     
     for (NSMutableDictionary *level in self.levels) {
         [self.currentLevels setObject:[NSMutableArray new] forKey: level[@"key"]];
@@ -60,8 +62,6 @@
                     NSDictionary *backwardLevel = prevLevel;
                     while (backwardLevel && ![backwardLevel isEqual:[NSNull null]]) {
                         NSString *backwardLabel = [self.currentSelectedLevels objectForKey:backwardLevel[@"key"]];
-                        
-                        NSLog(@"%@ %@ %@ %d", backwardLabel, [item objectForKey:backwardLevel[@"key"]], item[backwardLevel[@"key"]], [item[backwardLevel[@"key"]] isEqualToString: backwardLabel]);
                         
                         if (!backwardLabel || ([item objectForKey:backwardLevel[@"key"]] && [item[backwardLevel[@"key"]] isEqualToString: backwardLabel])) {
                             allowAddObject = allowAddObject && YES;
@@ -91,90 +91,93 @@
     }
 }
     
+- (void)renderItemViews {
+    
+    NSString *originTitle = self.question.title;
+    
+    
+
+    // Has default value
+    if (self.defaultValue) {
+
+        
+        for (NSDictionary *level in self.levels) {
+            
+            NSError  *error = nil;
+            NSString *pattern = [NSString stringWithFormat:@"\\[%@:(.*?)\\]", level[@"label"]];
+            NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern: pattern options:0 error:&error];
+            NSString* defaultValueLevel = @"";
+            
+            NSTextCheckingResult* match = [regex firstMatchInString:self.defaultValue options:0 range: NSMakeRange(0, [self.defaultValue length])];
+            defaultValueLevel = [self.defaultValue substringWithRange:[match rangeAtIndex:1]];
+            
+            if (![defaultValueLevel isEqualToString:@""]) {
+                [self.currentSelectedLevels setObject:defaultValueLevel forKey:level[@"key"]];
+            }
+        }
+        
+    }
+    
+    
+    [self buildCurrentLevels];
+    
+    NSMutableArray<UIView *> *itemViews = [NSMutableArray new];
+    [self.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    
+    UIView *itemView;
+
+    long i = 1;
+    for (NSDictionary *level in self.levels) {
+        
+
+        
+        if ([[self.currentLevels objectForKey:level[@"key"]] count] > 0) {
+            itemView = [UIPickerView new];
+            [(UIPickerView *)itemView setDataSource: self];
+            [(UIPickerView *)itemView setDelegate: self];
+            ((UIPickerView *)itemView).showsSelectionIndicator = YES;
+        }
+        else {
+            // TODO: add default value
+            self.question.title = level[@"label"];
+            itemView = [[SimpleQuestionView alloc] initWithQuestion:self.question defaultValue:self.currentSelectedLevels[level[@"key"]] delegate:self.delegate];
+        }
+        
+        itemView.tag = i;
+        [self.levelsMap setObject:@{@"key": level[@"key"], @"label": level[@"label"], @"view": itemView} forKey:[NSString stringWithFormat:@"%li", i]];
+        [self.contentView addSubview:itemView];
+        [itemViews addObject:itemView];
+        i++;
+        
+    }
+    
+    
+    if (self.defaultValue) {
+        i = 1;
+        for (NSDictionary *level in self.levels) {
+            
+            itemView = self.levelsMap[[NSString stringWithFormat:@"%li", i]][@"view"];
+            if ([[self.currentLevels objectForKey:level[@"key"]] count] > 0) {
+                NSInteger row = [self.currentLevels[level[@"key"]] indexOfObject:self.currentSelectedLevels[level[@"key"]]];
+                [(UIPickerView *)itemView selectRow:row inComponent:0 animated:NO];
+            }
+            i++;
+        }
+    }
+    
+    
+
+    
+    self.itemViews = itemViews;
+    self.question.title = originTitle;
+    [self autolayout];
+}
+    
 - (void)loadItemViews {
     
-    /*
-     {
-         "dataUrl": "/places/?category__code=subdistrict",
-         "name": "address",
-         "title": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1c\u0e39\u0e49\u0e1b\u0e48\u0e27\u0e22",
-         "filterFields": "level_name|\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e1a\u0e49\u0e32\u0e19\u0e1c\u0e39\u0e49\u0e1b\u0e48\u0e27\u0e22,level0_name|\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14,level1_name|\u0e2d\u0e33\u0e40\u0e20\u0e2d,level2_name|\u0e15\u0e33\u0e1a\u0e25,level_name|\u0e2b\u0e21\u0e39\u0e48\u0e17\u0e35\u0e48",
-         "validations": [
-             {
-                 "message": "\u0e01\u0e23\u0e38\u0e13\u0e32\u0e01\u0e23\u0e2d\u0e01\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e43\u0e2b\u0e49\u0e04\u0e23\u0e1a\u0e16\u0e49\u0e27\u0e19",
-                 "type": "address"
-             }
-         ],
-         "type": "address",
-         "id": 1361
-     }
-     
-     */
-    
-    self.currentSelectedLevels = [NSMutableDictionary new];
-    self.levelsMap = [NSMutableDictionary new];
-
-    
-    // Prepare data from dataUrl
-    QuestionDataSyncCommand *command = [[QuestionDataSyncCommand alloc] initWithConfiguration:[ConfigurationManager sharedConfiguration]];
-    [command setDataUrl: self.question.dataUrl];
-    [command setCompletionBlock:^(NSDictionary *params) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            NSString *originTitle = self.question.title;
-            
-            self.results = params[@"results"];
-            
-            [self buildCurrentLevels];
-            
-            NSMutableArray<UIView *> *itemViews = [NSMutableArray new];
-            [self.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-            
-            long i = 1;
-            for (NSDictionary *level in self.levels) {
-                
-                UIView *itemView;
-                
-                if ([[self.currentLevels objectForKey:level[@"key"]] count] > 0) {
-                    itemView = [UIPickerView new];
-                    [(UIPickerView *)itemView setDataSource: self];
-                    [(UIPickerView *)itemView setDelegate: self];
-                    ((UIPickerView *)itemView).showsSelectionIndicator = YES;
-                    // TODO: add default value
-                }
-                else {
-                    // TODO: add default value
-                    self.question.title = level[@"label"];
-                    itemView = [[SimpleQuestionView alloc] initWithQuestion:self.question defaultValue:@"todo: default value" delegate:self.delegate];
-                }
-                
-                itemView.tag = i;
-                [self.levelsMap setObject:@{@"key": level[@"key"], @"label": level[@"label"], @"view": itemView} forKey:[NSString stringWithFormat:@"%li", i]];
-                [self.contentView addSubview:itemView];
-                [itemViews addObject:itemView];
-                i++;
-
-            }
-            self.itemViews = itemViews;
-            self.question.title = originTitle;
-            [self autolayout];
-        
-        });
-    }];
-    
-    /*
-    [command setFailedBlock:^(NSError *error) {
-        //dispatch_sync(dispatch_get_main_queue(), ^{
-            NSString *errorCode = [NSString stringWithFormat:@"%tu", error.code];
-            //[self resultFailure: NSLocalizedString(errorCode, nil)];
-        //});
-    }];
-     */
-    
-    [command start];
     
     NSMutableArray<NSDictionary *> *levels = [NSMutableArray new];
-
+    
     NSObject *prevLevel = [NSNull null];
     for (NSString *levelString in [self.question.filterFields componentsSeparatedByString:@","]) {
         
@@ -185,6 +188,35 @@
     }
     
     self.levels = levels;
+
+    
+    self.currentSelectedLevels = [NSMutableDictionary new];
+    self.levelsMap = [NSMutableDictionary new];
+
+
+    
+    // Prepare data from dataUrl
+    QuestionDataSyncCommand *command = [[QuestionDataSyncCommand alloc] initWithConfiguration:[ConfigurationManager sharedConfiguration]];
+    [command setDataUrl: self.question.dataUrl];
+    [command setCompletionBlock:^(NSDictionary *params) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.results = params[@"results"];
+            [self renderItemViews];
+        });
+    }];
+    
+    
+    [command setFailedBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *errorCode = [NSString stringWithFormat:@"%tu", error.code];
+            //[self resultFailure: NSLocalizedString(errorCode, nil)];
+            [self renderItemViews];
+        });
+    }];
+    
+    
+    [command start];
+
     
 }
 
@@ -209,7 +241,6 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
     NSDictionary *level = [self levelFromItemView:pickerView];
-    NSLog(@"%@ -- %@", level[@"key"], [self.currentLevels[level[@"key"]] objectAtIndex:row]);
 
     [self.currentSelectedLevels setObject:[self.currentLevels[level[@"key"]] objectAtIndex:row] forKey:level[@"key"]];
     [self buildCurrentLevels];
