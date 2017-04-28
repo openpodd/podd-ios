@@ -55,7 +55,7 @@
 
                 
                 NSDictionary *prevLevel = level[@"prevLevel"];
-                if (prevLevel && [self.currentLevels[prevLevel[@"key"]] count] > 0) {
+                if (prevLevel && ![prevLevel isEqual:[NSNull null]] && [self.currentLevels[prevLevel[@"key"]] count] > 0) {
                     
                     NSDictionary *backwardLevel = prevLevel;
                     while (backwardLevel && ![backwardLevel isEqual:[NSNull null]]) {
@@ -149,7 +149,7 @@
                 }
                 
                 itemView.tag = i;
-                [self.levelsMap setObject:@{@"key": level[@"key"], @"view": itemView} forKey:[NSString stringWithFormat:@"%li", i]];
+                [self.levelsMap setObject:@{@"key": level[@"key"], @"label": level[@"label"], @"view": itemView} forKey:[NSString stringWithFormat:@"%li", i]];
                 [self.contentView addSubview:itemView];
                 [itemViews addObject:itemView];
                 i++;
@@ -213,14 +213,62 @@
 
     [self.currentSelectedLevels setObject:[self.currentLevels[level[@"key"]] objectAtIndex:row] forKey:level[@"key"]];
     [self buildCurrentLevels];
+
+    BOOL updateView = NO;
     
     for (UIView *itemView in self.itemViews) {
+
+        if (updateView && [itemView isKindOfClass:[UIPickerView class]]) {
+            
+            level = [self levelFromItemView:itemView];
+            
+            [self.currentSelectedLevels setObject:[self.currentLevels[level[@"key"]] objectAtIndex:0] forKey:level[@"key"]];
+            [(UIPickerView *)itemView reloadAllComponents];
+            [(UIPickerView *)itemView selectRow:0 inComponent:0 animated:YES];
+        }
+        
+        if (pickerView == itemView) {
+            updateView = YES;
+        }
+        
+    }
+    
+    
+}
+
+
+- (void)prepareForSubmit {
+    
+    [super prepareForSubmit];
+    
+    NSMutableArray *items = [NSMutableArray new];
+    for (UIView *itemView in self.itemViews) {
+        NSDictionary *level = [self levelFromItemView:itemView];
+        NSString *value = @"";
+        
         if ([itemView isKindOfClass:[UIPickerView class]]) {
-            [((UIPickerView *)itemView) reloadAllComponents];
+            value = self.currentSelectedLevels[level[@"key"]];
+        }
+        else {
+            value = ((SimpleQuestionView *)itemView).textView.text;
+        }
+        
+        if (![value isEqualToString:@""]) {
+            value = [NSString stringWithFormat:@"[%@:%@]", level[@"label"], value];
+            [items addObject:value];
         }
     }
     
+    NSString *formValue;
+    if (items.count > 0) {
+        formValue = [items componentsJoinedByString:@""];
+    }
+    
+    [self.delegate setFormValue:formValue forKey:self.question.name];
+    
 }
+
+    
     
 @end
 
