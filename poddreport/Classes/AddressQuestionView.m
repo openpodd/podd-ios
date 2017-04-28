@@ -55,7 +55,6 @@
                 
                 BOOL allowAddObject = YES;
 
-                
                 NSDictionary *prevLevel = level[@"prevLevel"];
                 if (prevLevel && ![prevLevel isEqual:[NSNull null]] && [self.currentLevels[prevLevel[@"key"]] count] > 0) {
                     
@@ -138,7 +137,6 @@
             ((UIPickerView *)itemView).showsSelectionIndicator = YES;
         }
         else {
-            // TODO: add default value
             self.question.title = level[@"label"];
             itemView = [[SimpleQuestionView alloc] initWithQuestion:self.question defaultValue:self.currentSelectedLevels[level[@"key"]] delegate:self.delegate];
         }
@@ -192,9 +190,13 @@
     
     self.currentSelectedLevels = [NSMutableDictionary new];
     self.levelsMap = [NSMutableDictionary new];
-
-
     
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+    self.results = [prefs objectForKey:self.question.dataUrl];
+    [self renderItemViews];
+
+
     // Prepare data from dataUrl
     QuestionDataSyncCommand *command = [[QuestionDataSyncCommand alloc] initWithConfiguration:[ConfigurationManager sharedConfiguration]];
     [command setDataUrl: self.question.dataUrl];
@@ -202,15 +204,15 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.results = params[@"results"];
             [self renderItemViews];
+            [prefs setObject:self.results forKey:self.question.dataUrl];
+
         });
     }];
     
     
     [command setFailedBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *errorCode = [NSString stringWithFormat:@"%tu", error.code];
-            //[self resultFailure: NSLocalizedString(errorCode, nil)];
-            [self renderItemViews];
+            // Do nothing
         });
     }];
     
