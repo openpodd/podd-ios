@@ -20,6 +20,7 @@ static NSString * _Nonnull const QUESTION_TYPE_DOUBLE = @"double";
 static NSString * _Nonnull const QUESTION_TYPE_SINGLE = @"single";
 static NSString * _Nonnull const QUESTION_TYPE_MULTIPLE = @"multiple";
 static NSString * _Nonnull const QUESTION_TYPE_ADDRESS = @"address";
+static NSString * _Nonnull const QUESTION_TYPE_AUTOCOMPLETE = @"autocomplete";
 static NSString * _Nonnull const QUESTION_TYPE_DATE = @"date";
 
 @interface Question : NSObject

@@ -21,6 +21,7 @@
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             dateFormatter.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
             dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
             NSDate *date = [dateFormatter dateFromString:value];
             datePicker.date = date;
         }

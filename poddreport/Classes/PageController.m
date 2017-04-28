@@ -16,7 +16,7 @@
 #import "IntegerQuestionView.h"
 #import "AddressQuestionView.h"
 #import "DateQuestionView.h"
-//#import "AutocompleteQuestionView.h"
+#import "AutocompleteQuestionView.h"
 
 #import "ContextManager.h"
 #import "PageContext.h"
@@ -217,6 +217,7 @@
                                ,QUESTION_TYPE_MULTIPLE: NSStringFromClass(MultipleChoiceQuestionView.class)
                                ,QUESTION_TYPE_INTEGER: NSStringFromClass(IntegerQuestionView.class)
                                ,QUESTION_TYPE_ADDRESS: NSStringFromClass(AddressQuestionView.class)
+                               ,QUESTION_TYPE_AUTOCOMPLETE: NSStringFromClass(AutocompleteQuestionView.class)
                                ,QUESTION_TYPE_DATE: NSStringFromClass(DateQuestionView.class)
                                };
     return NSClassFromString(mapping[question.type]);
